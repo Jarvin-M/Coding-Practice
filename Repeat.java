@@ -7,21 +7,26 @@ class Repeat{
 	}
 	int sum;
 	
-	public char[] repeatAdd(int num){
-		String x = Integer.toString(num);
-		char[] xArrray = x.toCharArray();
-		for(int i =0; i<xArrray.length; i++){
-			sum += Character.getNumericValue(xArrray[i]);
+	public int repeatAdd(int num){
+		if(num<10){
+			sum = num;
 		}
+		else{
+			String newNum = Integer.toString(num);
 		
-		if(sum>9){
-			repeatAdd(sum);
-		}else{
+			for(int i=0; i<newNum.length(); i++){
+				sum += Character.getNumericValue(newNum.charAt(i));
+			}
+		}
+		return Integer.toString(num).length();
+	}
 
-		}
-	
-	return xArrray;
-		
+	public int finalsum(int input){
+		if(Integer.toString(repeatAdd(input)).length()> 1){
+			repeatAdd(repeatAdd(input));
+		}else
+			return repeatAdd(input);
 		
 	}
+
 }
